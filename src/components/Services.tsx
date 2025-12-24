@@ -29,47 +29,47 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 px-6 relative">
+    <section id="services" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
       <div className="container max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 rounded-full glass text-sm font-medium text-primary mb-4">
+        <div className="text-center mb-10 sm:mb-12 md:mb-16">
+          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">
             Services
           </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
             What I Can{" "}
             <span className="text-gradient">Do For You</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
             Offering comprehensive web development services to help bring 
             your digital vision to life.
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group glass rounded-2xl p-8 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]"
+              className="group glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 hover:border-primary/50 transition-all duration-500 hover:scale-[1.02]"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 
+              <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 
                                 flex items-center justify-center shrink-0
                                 group-hover:from-primary/30 group-hover:to-accent/30 transition-colors">
-                  <service.icon className="w-8 h-8 text-primary" />
+                  <service.icon className="w-7 h-7 sm:w-8 sm:h-8 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                  <h3 className="font-display text-lg sm:text-xl font-semibold mb-2 sm:mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4">
                     {service.description}
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {service.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-3 py-1 rounded-full bg-muted text-xs font-medium text-muted-foreground"
+                        className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-muted text-[10px] sm:text-xs font-medium text-muted-foreground"
                       >
                         {feature}
                       </span>
@@ -82,16 +82,16 @@ const Services = () => {
         </div>
 
         {/* CTA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row gap-4 items-center glass rounded-2xl p-8">
+        <div className="mt-10 sm:mt-12 md:mt-16 text-center">
+          <div className="inline-flex flex-col sm:flex-row gap-4 sm:gap-6 items-center glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8">
             <div className="text-center sm:text-left">
-              <h3 className="font-display text-xl font-semibold mb-2">Have a project in mind?</h3>
-              <p className="text-muted-foreground text-sm">Let's discuss how I can help you achieve your goals.</p>
+              <h3 className="font-display text-lg sm:text-xl font-semibold mb-1 sm:mb-2">Have a project in mind?</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm">Let's discuss how I can help you achieve your goals.</p>
             </div>
             <a
               href="#contact"
-              className="px-6 py-3 rounded-lg bg-accent text-accent-foreground font-display font-semibold 
-                         hover:opacity-90 transition-all duration-300 whitespace-nowrap"
+              className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg bg-accent text-accent-foreground font-display font-semibold 
+                         hover:opacity-90 transition-all duration-300 whitespace-nowrap text-sm sm:text-base"
             >
               Get Free Quote
             </a>
