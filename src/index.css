@@ -6,6 +6,45 @@
 
 @layer base {
   :root {
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 210 76% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 90%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 92%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 12 76% 58%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 210 76% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens - Light mode */
+    --gradient-primary: linear-gradient(135deg, hsl(210 76% 50%) 0%, hsl(222 76% 40%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(12 76% 58%) 0%, hsl(25 90% 50%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(0, 0%, 100%, 0.9) 0%, hsla(220, 20%, 97%, 0.8) 100%);
+    --shadow-glow: 0 0 60px hsla(210, 76%, 50%, 0.12);
+    --shadow-card: 0 25px 50px -12px hsla(222, 47%, 11%, 0.08);
+  }
+
+  .dark {
     --background: 222 47% 8%;
     --foreground: 210 40% 98%;
 
@@ -34,19 +73,12 @@
     --input: 222 30% 20%;
     --ring: 210 76% 55%;
 
-    --radius: 0.75rem;
-
-    /* Custom tokens */
+    /* Custom tokens - Dark mode */
     --gradient-primary: linear-gradient(135deg, hsl(210 76% 55%) 0%, hsl(222 76% 45%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(12 76% 65%) 0%, hsl(25 90% 55%) 100%);
     --gradient-glass: linear-gradient(135deg, hsla(222, 47%, 15%, 0.8) 0%, hsla(222, 47%, 11%, 0.6) 100%);
     --shadow-glow: 0 0 60px hsla(210, 76%, 55%, 0.15);
     --shadow-card: 0 25px 50px -12px hsla(222, 47%, 5%, 0.5);
-  }
-
-  .dark {
-    --background: 222 47% 8%;
-    --foreground: 210 40% 98%;
   }
 }
 
@@ -67,6 +99,10 @@
 
 @layer utilities {
   .glass {
+    @apply bg-card/70 backdrop-blur-xl border border-border/60;
+  }
+
+  .dark .glass {
     @apply bg-card/60 backdrop-blur-xl border border-border/50;
   }
 
