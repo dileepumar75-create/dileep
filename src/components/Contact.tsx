@@ -6,19 +6,19 @@ const contactInfo = [
   {
     icon: Mail,
     label: "Email",
-    value: "dileepkumar@email.com",
-    href: "mailto:dileepkumar@email.com",
+    value: "dileepumar75@gmail.com",
+    href: "mailto:dileepumar75@gmail.com",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+91 XXXXX XXXXX",
-    href: "tel:+91XXXXXXXXXX",
+    value: "+92 XXXXX XXXXX",
+    href: "tel:+92XXXXXXXXXX",
   },
   {
     icon: MapPin,
     label: "Location",
-    value: "India",
+    value: "Pakistan",
     href: "#",
   },
 ];
