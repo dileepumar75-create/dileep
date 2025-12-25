@@ -33,6 +33,14 @@
   }
 }
 
+/* Ensure reduced-motion users don't see spinning logos */
+@media (prefers-reduced-motion: reduce) {
+  a:nth-of-type(2) .logo {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .card {
   padding: 2em;
 }

@@ -14,7 +14,7 @@ const Hero = () => {
       <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center relative z-10">
         {/* Text Content */}
         <div className="order-2 lg:order-1 text-center lg:text-left">
-          <div className="animate-fade-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
+          <div className="motion-safe:animate-fade-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
             <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass text-xs sm:text-sm font-medium text-accent mb-4 sm:mb-6">
               Available for Freelance Work
             </span>
@@ -39,7 +39,7 @@ const Hero = () => {
           </p>
 
           <div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-10 animate-fade-up"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-10 motion-safe:animate-fade-up"
             style={{ animationDelay: "0.8s", opacity: 0 }}
           >
             <a 
@@ -59,7 +59,7 @@ const Hero = () => {
           </div>
 
           <div 
-            className="flex gap-3 sm:gap-4 justify-center lg:justify-start animate-fade-up"
+            className="flex gap-3 sm:gap-4 justify-center lg:justify-start motion-safe:animate-fade-up"
             style={{ animationDelay: "1s", opacity: 0 }}
           >
             {[
@@ -81,7 +81,7 @@ const Hero = () => {
         </div>
 
         {/* Image */}
-        <div className="order-1 lg:order-2 flex justify-center lg:justify-end animate-scale-in" style={{ animationDelay: "0.4s", opacity: 0 }}>
+        <div className="order-1 lg:order-2 flex justify-center lg:justify-end motion-safe:animate-scale-in" style={{ animationDelay: "0.4s", opacity: 0 }}>
           <div className="relative">
             {/* Decorative ring */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 blur-2xl scale-110" />
@@ -99,7 +99,7 @@ const Hero = () => {
             </div>
 
             {/* Floating badge */}
-            <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 px-3 sm:px-4 py-2 sm:py-3 rounded-xl glass animate-float">
+            <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 px-3 sm:px-4 py-2 sm:py-3 rounded-xl glass motion-safe:animate-float">
               <p className="text-xs sm:text-sm font-display font-semibold text-foreground">1+ Year</p>
               <p className="text-[10px] sm:text-xs text-muted-foreground">Experience</p>
             </div>
@@ -115,7 +115,7 @@ const Hero = () => {
         style={{ animationDelay: "1.5s", opacity: 0 }}
       >
         <span className="text-xs sm:text-sm font-medium">Scroll Down</span>
-        <ArrowDown size={18} className="animate-bounce" />
+        <ArrowDown size={18} className="motion-safe:animate-bounce" />
       </a>
     </section>
   );

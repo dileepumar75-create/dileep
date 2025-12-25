@@ -73,7 +73,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 glass rounded-xl p-4 sm:p-6 animate-fade-up">
+          <div className="md:hidden mt-4 glass rounded-xl p-4 sm:p-6 motion-safe:animate-fade-up">
             <div className="flex flex-col gap-3 sm:gap-4">
               {navItems.map((item) => (
                 <a
