@@ -1,87 +1,109 @@
-import { Code2, Palette, Rocket, Users } from "lucide-react";
+import aboutAsset from "@/assets/dileep-about.png.asset.json";
+import { motion } from "framer-motion";
+import { Shield, Code2, Cpu, Palette } from "lucide-react";
 
 const stats = [
-  { label: "Years Experience", value: "1+" },
-  { label: "Projects Completed", value: "15+" },
-  { label: "Happy Clients", value: "10+" },
-  { label: "Technologies", value: "12+" },
-];
-
-const highlights = [
-  {
-    icon: Code2,
-    title: "Clean Code",
-    description: "Writing maintainable, scalable, and efficient code following best practices.",
-  },
-  {
-    icon: Palette,
-    title: "Modern Design",
-    description: "Creating visually stunning interfaces with attention to every detail.",
-  },
-  {
-    icon: Rocket,
-    title: "Fast Delivery",
-    description: "Delivering high-quality projects on time, every time.",
-  },
-  {
-    icon: Users,
-    title: "Client Focused",
-    description: "Understanding your vision and bringing it to life perfectly.",
-  },
+  { label: "Years Experience", value: "2+" },
+  { label: "Projects Delivered", value: "25+" },
+  { label: "Happy Clients", value: "15+" },
+  { label: "Technologies", value: "20+" },
 ];
 
 const About = () => {
   return (
-    <section id="about" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative">
-      <div className="container max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass text-xs sm:text-sm font-medium text-primary mb-3 sm:mb-4">
+    <section id="about" className="relative py-24 px-4 sm:px-6">
+      <div className="container max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-4 py-2 rounded-full glass text-xs font-medium text-primary tracking-[0.3em] uppercase mb-4">
             About Me
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Passionate About Creating{" "}
-            <span className="text-gradient">Digital Excellence</span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Crafting <span className="text-gradient-cyber">The Future</span>
+            <br /> One Line at a Time
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-            I'm a dedicated freelance web developer with over a year of experience 
-            in building modern, responsive, and user-centric web applications.
-          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
+            <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl rounded-3xl" />
+            <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow">
+              <img src={aboutAsset.url} alt="Dileep Kumar" className="w-full h-auto object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="glass rounded-2xl p-4">
+                  <p className="font-display font-semibold text-gradient">Dileep Kumar</p>
+                  <p className="text-xs text-muted-foreground">Cybersecurity • AI • Web Development</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <div className="space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
+              <p>
+                Hi, I'm <span className="text-foreground font-medium">Dileep Kumar</span>, a passionate Computer Science student and technology enthusiast from Pakistan.
+              </p>
+              <p>
+                I build modern websites, explore <span className="text-primary">cybersecurity</span>, design AI-powered content, and craft professional digital experiences that combine creativity with innovation.
+              </p>
+              <p>
+                My journey started with web development. Today I continuously learn <span className="text-foreground">Ethical Hacking</span>, <span className="text-foreground">Artificial Intelligence</span>, UI/UX, Trading Analysis, and Digital Content Creation.
+              </p>
+              <p>
+                My long-term goal is to become a professional <span className="text-gradient-accent font-medium">Cybersecurity Expert, Full Stack Developer, AI Creator, and Technology Entrepreneur</span> — helping people learn technology in a simple way.
+              </p>
+            </div>
+
+            {/* Icons row */}
+            <div className="grid grid-cols-4 gap-3 mt-8">
+              {[
+                { icon: Shield, label: "Security" },
+                { icon: Code2, label: "Code" },
+                { icon: Cpu, label: "AI" },
+                { icon: Palette, label: "Design" },
+              ].map((item) => (
+                <div key={item.label} className="glass rounded-xl p-3 text-center hover:border-primary/50 hover:scale-105 transition-all">
+                  <item.icon className="w-5 h-5 mx-auto text-primary mb-1" />
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-10 sm:mb-12 md:mb-16">
-          {stats.map((stat, index) => (
-            <div
-              key={stat.label}
-              className="glass rounded-xl sm:rounded-2xl p-4 sm:p-6 text-center hover:border-primary/50 transition-all duration-300 hover:scale-105"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16">
+          {stats.map((s, i) => (
+            <motion.div
+              key={s.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass neon-border rounded-2xl p-6 text-center group hover:scale-105 transition-all"
             >
-              <p className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mb-1 sm:mb-2">
-                {stat.value}
-              </p>
-              <p className="text-xs sm:text-sm text-muted-foreground">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Highlights Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {highlights.map((item, index) => (
-            <div
-              key={item.title}
-              className="group glass rounded-xl sm:rounded-2xl p-4 sm:p-6 hover:border-primary/50 transition-all duration-300 hover:scale-105"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-primary/10 flex items-center justify-center mb-3 sm:mb-4 
-                              group-hover:bg-primary/20 transition-colors">
-                <item.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary" />
-              </div>
-              <h3 className="font-display text-lg sm:text-xl font-semibold mb-1.5 sm:mb-2">{item.title}</h3>
-              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
-                {item.description}
-              </p>
-            </div>
+              <p className="font-display text-3xl sm:text-4xl font-bold text-gradient-cyber mb-1">{s.value}</p>
+              <p className="text-xs sm:text-sm text-muted-foreground uppercase tracking-wider">{s.label}</p>
+            </motion.div>
           ))}
         </div>
       </div>

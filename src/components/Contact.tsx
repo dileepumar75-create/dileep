@@ -1,202 +1,156 @@
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
 
-const contactInfo = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "dileepumar75@gmail.com",
-    href: "mailto:dileepumar75@gmail.com",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+92 XXXXX XXXXX",
-    href: "tel:+92XXXXXXXXXX",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "Pakistan",
-    href: "#",
-  },
+const schema = z.object({
+  name: z.string().trim().min(1, "Name required").max(100),
+  email: z.string().trim().email("Invalid email").max(255),
+  message: z.string().trim().min(1, "Message required").max(1000),
+});
+
+const socials = [
+  { icon: Github, label: "GitHub", href: "#", color: "hover:text-white" },
+  { icon: Linkedin, label: "LinkedIn", href: "#", color: "hover:text-blue-400" },
+  { icon: Mail, label: "Email", href: "mailto:dileepumar75@gmail.com", color: "hover:text-primary" },
+  { icon: MessageCircle, label: "WhatsApp", href: "#", color: "hover:text-green-400" },
 ];
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon!",
-    });
-
-    setFormData({ name: "", email: "", subject: "", message: "" });
-    setIsSubmitting(false);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
+    const parsed = schema.safeParse(form);
+    if (!parsed.success) {
+      toast({ title: "Please check your input", description: parsed.error.issues[0].message, variant: "destructive" });
+      return;
+    }
+    setSending(true);
+    await new Promise((r) => setTimeout(r, 900));
+    toast({ title: "Message Sent!", description: "Thanks for reaching out — I'll reply within 24 hours." });
+    setForm({ name: "", email: "", message: "" });
+    setSending(false);
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative bg-secondary/30">
+    <section id="contact" className="relative py-24 px-4 sm:px-6">
       <div className="container max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass text-xs sm:text-sm font-medium text-accent mb-3 sm:mb-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <span className="inline-block px-4 py-2 rounded-full glass text-xs font-medium text-primary tracking-[0.3em] uppercase mb-4">
             Contact
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Let's{" "}
-            <span className="text-gradient-accent">Work Together</span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            Let's Build Something <span className="text-gradient-cyber">Amazing</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-            Have a project in mind? I'd love to hear about it. Get in touch 
-            and let's create something amazing together.
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Open to freelance projects, collaborations, and exciting opportunities.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-8 sm:gap-10 md:gap-12">
-          {/* Contact Info */}
-          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
-            {contactInfo.map((info) => (
-              <a
-                key={info.label}
-                href={info.href}
-                className="flex items-center gap-3 sm:gap-4 glass rounded-lg sm:rounded-xl p-4 sm:p-5 hover:border-primary/50 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center 
-                                group-hover:bg-primary/20 transition-colors shrink-0">
-                  <info.icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+        <div className="grid lg:grid-cols-5 gap-6">
+          {/* Left info */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-2 space-y-4"
+          >
+            <div className="glass rounded-2xl p-6">
+              <h3 className="font-display font-semibold mb-4">Get in Touch</h3>
+              <div className="space-y-3 text-sm">
+                <a href="mailto:dileepumar75@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+                  <Mail size={16} className="text-primary" /> dileepumar75@gmail.com
+                </a>
+                <div className="flex items-center gap-3 text-muted-foreground">
+                  <MapPin size={16} className="text-primary" /> Pakistan
                 </div>
-                <div className="min-w-0">
-                  <p className="text-xs sm:text-sm text-muted-foreground">{info.label}</p>
-                  <p className="font-display font-medium text-sm sm:text-base truncate">{info.value}</p>
-                </div>
-              </a>
-            ))}
-
-            <div className="glass rounded-lg sm:rounded-xl p-4 sm:p-6 mt-6 sm:mt-8">
-              <h3 className="font-display font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Availability</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
-                Currently accepting new freelance projects. Response time: within 24 hours.
-              </p>
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs sm:text-sm font-medium text-green-500 dark:text-green-400">Available for work</span>
               </div>
             </div>
-          </div>
 
-          {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="lg:col-span-3 glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8">
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <div className="glass rounded-2xl p-6">
+              <h3 className="font-display font-semibold mb-4">Follow Me</h3>
+              <div className="grid grid-cols-4 gap-3">
+                {socials.map((s) => (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    aria-label={s.label}
+                    className={`aspect-square rounded-xl glass flex items-center justify-center text-muted-foreground ${s.color} hover:scale-110 hover:shadow-neon transition-all`}
+                  >
+                    <s.icon size={18} />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="glass rounded-2xl p-6">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse" />
+                <span className="text-sm font-semibold text-green-400">Available for work</span>
+              </div>
+              <p className="text-xs text-muted-foreground">Response time: within 24 hours</p>
+            </div>
+          </motion.div>
+
+          {/* Form */}
+          <motion.form
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            onSubmit={submit}
+            className="lg:col-span-3 glass-strong rounded-3xl p-6 sm:p-8 space-y-5"
+          >
+            <div className="grid sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="name" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
-                  Your Name
-                </label>
+                <label className="block text-xs font-medium mb-2 text-muted-foreground">Your Name</label>
                 <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-muted border border-border text-foreground 
-                             placeholder:text-muted-foreground focus:outline-none focus:ring-2 
-                             focus:ring-primary/50 focus:border-primary transition-all text-sm sm:text-base"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  maxLength={100}
+                  className="w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all text-sm"
                   placeholder="John Doe"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
-                  Your Email
-                </label>
+                <label className="block text-xs font-medium mb-2 text-muted-foreground">Your Email</label>
                 <input
                   type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-muted border border-border text-foreground 
-                             placeholder:text-muted-foreground focus:outline-none focus:ring-2 
-                             focus:ring-primary/50 focus:border-primary transition-all text-sm sm:text-base"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  maxLength={255}
+                  className="w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all text-sm"
                   placeholder="john@example.com"
                 />
               </div>
             </div>
-
-            <div className="mb-4 sm:mb-6">
-              <label htmlFor="subject" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                required
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-muted border border-border text-foreground 
-                           placeholder:text-muted-foreground focus:outline-none focus:ring-2 
-                           focus:ring-primary/50 focus:border-primary transition-all text-sm sm:text-base"
-                placeholder="Project Inquiry"
-              />
-            </div>
-
-            <div className="mb-4 sm:mb-6">
-              <label htmlFor="message" className="block text-xs sm:text-sm font-medium mb-1.5 sm:mb-2">
-                Message
-              </label>
+            <div>
+              <label className="block text-xs font-medium mb-2 text-muted-foreground">Message</label>
               <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-                rows={4}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg bg-muted border border-border text-foreground 
-                           placeholder:text-muted-foreground focus:outline-none focus:ring-2 
-                           focus:ring-primary/50 focus:border-primary transition-all resize-none text-sm sm:text-base"
+                value={form.message}
+                onChange={(e) => setForm({ ...form, message: e.target.value })}
+                rows={5}
+                maxLength={1000}
+                className="w-full px-4 py-3 rounded-xl bg-input border border-border focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all resize-none text-sm"
                 placeholder="Tell me about your project..."
               />
             </div>
-
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-primary text-primary-foreground 
-                         font-display font-semibold hover:opacity-90 transition-all duration-300 
-                         flex items-center justify-center gap-2 disabled:opacity-50 glow text-sm sm:text-base"
+              disabled={sending}
+              className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-display font-semibold hover:scale-105 hover:shadow-neon transition-all inline-flex items-center gap-2 disabled:opacity-60"
             >
-              {isSubmitting ? (
-                "Sending..."
-              ) : (
-                <>
-                  Send Message
-                  <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
-                </>
-              )}
+              {sending ? "Sending..." : (<>Send Message <Send size={16} /></>)}
             </button>
-          </form>
+          </motion.form>
         </div>
       </div>
     </section>
