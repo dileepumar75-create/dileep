@@ -1,121 +1,176 @@
-import profileImage from "@/assets/dileep-profile.jpg";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import profileAsset from "@/assets/dileep-hero.png.asset.json";
+import { motion } from "framer-motion";
+import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
+
+const titles = [
+  "Cybersecurity Enthusiast",
+  "Full Stack Web Developer",
+  "AI Designer",
+  "Creative Video Editor",
+  "Professional Thumbnail Designer",
+  "AI Prompt Engineer",
+  "Trader",
+  "YouTuber",
+  "Technology Advisor",
+];
 
 const Hero = () => {
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const i = setInterval(() => setIdx((v) => (v + 1) % titles.length), 2200);
+    return () => clearInterval(i);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6 pt-20 md:pt-0">
-      {/* Background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 -left-20 sm:-left-32 w-64 sm:w-96 h-64 sm:h-96 bg-primary/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-1/4 -right-20 sm:-right-32 w-56 sm:w-80 h-56 sm:h-80 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] sm:w-[800px] h-[500px] sm:h-[800px] bg-primary/5 rounded-full blur-3xl" />
-      </div>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16 px-4 sm:px-6">
+      {/* Grid pattern */}
+      <div className="absolute inset-0 grid-pattern opacity-40 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
 
-      <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center relative z-10">
-        {/* Text Content */}
+      {/* Floating orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "3s" }} />
+
+      <div className="container max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
+        {/* Left - text */}
         <div className="order-2 lg:order-1 text-center lg:text-left">
-          <div className="motion-safe:animate-fade-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass text-xs sm:text-sm font-medium text-accent mb-4 sm:mb-6">
-              Available for Freelance Work
-            </span>
-          </div>
-          
-          <h1 
-            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 animate-fade-up leading-tight"
-            style={{ animationDelay: "0.4s", opacity: 0 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass text-xs sm:text-sm font-medium mb-6"
           >
-            Hi, I'm{" "}
-            <span className="text-gradient">Dileep</span>
+            <Sparkles size={14} className="text-primary" />
+            <span className="text-primary">Available for Freelance & Collaborations</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] mb-4"
+          >
+            Hi, I'm <span className="text-gradient-cyber animate-gradient-shift">Dileep</span>
             <br />
-            <span className="text-gradient-accent">Kumar</span>
-          </h1>
-          
-          <p 
-            className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 animate-fade-up"
-            style={{ animationDelay: "0.6s", opacity: 0 }}
-          >
-            A passionate <span className="text-foreground font-medium">Web Developer</span> crafting 
-            beautiful, responsive, and user-friendly digital experiences.
-          </p>
+            <span className="text-gradient">Kumar</span>
+          </motion.h1>
 
-          <div 
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start mb-8 sm:mb-10 motion-safe:animate-fade-up"
-            style={{ animationDelay: "0.8s", opacity: 0 }}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="h-8 sm:h-10 md:h-12 mb-6 flex items-center justify-center lg:justify-start"
           >
-            <a 
-              href="#contact" 
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg bg-primary text-primary-foreground font-display font-semibold 
-                         hover:opacity-90 transition-all duration-300 glow hover:scale-105 text-sm sm:text-base"
+            <span className="text-lg sm:text-xl md:text-2xl font-display font-medium text-muted-foreground">I'm a </span>
+            <motion.span
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.4 }}
+              className="ml-2 text-lg sm:text-xl md:text-2xl font-display font-semibold text-gradient-accent"
             >
-              Let's Work Together
-            </a>
-            <a 
-              href="#services" 
-              className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg glass font-display font-semibold text-foreground
-                         hover:bg-secondary transition-all duration-300 hover:scale-105 text-sm sm:text-base"
-            >
-              View My Work
-            </a>
-          </div>
+              {titles[idx]}
+            </motion.span>
+          </motion.div>
 
-          <div 
-            className="flex gap-3 sm:gap-4 justify-center lg:justify-start motion-safe:animate-fade-up"
-            style={{ animationDelay: "1s", opacity: 0 }}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+            className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8"
+          >
+            Building <span className="text-foreground font-medium">Secure Digital Experiences</span>,{" "}
+            <span className="text-foreground font-medium">AI Solutions</span>, Creative Content, and{" "}
+            <span className="text-foreground font-medium">Modern Web Applications</span>.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+            className="flex flex-wrap gap-3 justify-center lg:justify-start mb-10"
+          >
+            <a href="#projects" className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-display font-semibold hover:scale-105 hover:shadow-neon transition-all duration-300 text-sm sm:text-base">
+              View Portfolio
+            </a>
+            <a href="#" download className="px-6 py-3.5 rounded-xl glass font-display font-semibold hover:border-primary/50 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2">
+              <Download size={16} /> Download CV
+            </a>
+            <a href="#contact" className="px-6 py-3.5 rounded-xl border border-primary/40 text-primary font-display font-semibold hover:bg-primary/10 hover:scale-105 transition-all duration-300 text-sm sm:text-base">
+              Hire Me
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="flex gap-3 justify-center lg:justify-start"
           >
             {[
               { icon: Github, href: "#", label: "GitHub" },
               { icon: Linkedin, href: "#", label: "LinkedIn" },
               { icon: Mail, href: "#contact", label: "Email" },
             ].map(({ icon: Icon, href, label }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full glass flex items-center justify-center text-muted-foreground 
-                           hover:text-primary hover:border-primary/50 transition-all duration-300"
-              >
-                <Icon size={18} className="sm:w-5 sm:h-5" />
+              <a key={label} href={href} aria-label={label}
+                className="w-11 h-11 rounded-xl glass flex items-center justify-center text-muted-foreground hover:text-primary hover:scale-110 hover:shadow-neon transition-all duration-300">
+                <Icon size={18} />
               </a>
             ))}
-          </div>
+          </motion.div>
         </div>
 
-        {/* Image */}
-        <div className="order-1 lg:order-2 flex justify-center lg:justify-end motion-safe:animate-scale-in" style={{ animationDelay: "0.4s", opacity: 0 }}>
+        {/* Right - image */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+          className="order-1 lg:order-2 flex justify-center lg:justify-end"
+        >
           <div className="relative">
-            {/* Decorative ring */}
-            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 blur-2xl scale-110" />
-            
-            {/* Main image container */}
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden 
-                            border-4 border-primary/20 glow">
-              <img
-                src={profileImage}
-                alt="Dileep Kumar - Web Developer"
-                className="w-full h-full object-cover object-top"
-              />
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+            {/* Rotating rings */}
+            <div className="absolute inset-0 rounded-full border border-primary/30 animate-spin-slow" style={{ transform: "scale(1.15)" }} />
+            <div className="absolute inset-0 rounded-full border border-accent/30 animate-spin-slow" style={{ transform: "scale(1.3)", animationDirection: "reverse", animationDuration: "30s" }} />
+
+            {/* Glow */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/50 via-accent/40 to-transparent blur-3xl scale-110 animate-glow-pulse" />
+
+            {/* Image */}
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-primary/40 glow-neon">
+              <img src={profileAsset.url} alt="Dileep Kumar" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
 
-            {/* Floating badge */}
-            <div className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 px-3 sm:px-4 py-2 sm:py-3 rounded-xl glass motion-safe:animate-float">
-              <p className="text-xs sm:text-sm font-display font-semibold text-foreground">1+ Year</p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">Experience</p>
-            </div>
+            {/* Floating badges */}
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -top-2 -left-4 glass rounded-2xl px-4 py-2.5 shadow-lg"
+            >
+              <p className="text-xs text-muted-foreground">Experience</p>
+              <p className="font-display font-bold text-sm text-gradient">2+ Years</p>
+            </motion.div>
+
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+              className="absolute -bottom-2 -right-4 glass rounded-2xl px-4 py-2.5 shadow-lg"
+            >
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                <p className="font-display font-semibold text-xs">Available Now</p>
+              </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <a 
-        href="#about" 
-        className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 
-                   text-muted-foreground hover:text-foreground transition-colors animate-fade-in hidden sm:flex"
-        style={{ animationDelay: "1.5s", opacity: 0 }}
-      >
-        <span className="text-xs sm:text-sm font-medium">Scroll Down</span>
-        <ArrowDown size={18} className="motion-safe:animate-bounce" />
+      <a href="#about" className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+        <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
+        <ArrowDown size={16} className="animate-bounce" />
       </a>
     </section>
   );

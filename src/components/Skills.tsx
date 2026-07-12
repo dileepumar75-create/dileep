@@ -1,92 +1,70 @@
-const skills = [
-  { name: "HTML5", level: 95 },
-  { name: "CSS3 / Tailwind", level: 90 },
-  { name: "JavaScript", level: 85 },
-  { name: "React.js", level: 80 },
-  { name: "TypeScript", level: 75 },
-  { name: "Node.js", level: 70 },
-  { name: "Git / GitHub", level: 85 },
-  { name: "Responsive Design", level: 95 },
-];
+import { motion } from "framer-motion";
+import { Shield, Code2, Cpu, Palette, Video, TrendingUp, Youtube, Users } from "lucide-react";
 
-const technologies = [
-  "HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Next.js", 
-  "Tailwind CSS", "Node.js", "Git", "Figma", "REST APIs", "MongoDB"
+const skillGroups = [
+  { icon: Shield, title: "Cybersecurity", color: "from-cyan-400 to-blue-500", items: ["Networking", "Linux", "Ethical Hacking", "Web Security", "Penetration Testing", "Security Research"] },
+  { icon: Code2, title: "Web Development", color: "from-blue-400 to-indigo-500", items: ["HTML5", "CSS3", "JavaScript", "Bootstrap", "React", "Responsive Design"] },
+  { icon: Cpu, title: "Artificial Intelligence", color: "from-purple-400 to-pink-500", items: ["AI Prompt Engineering", "ChatGPT", "Gemini", "Leonardo AI", "Midjourney", "AI Workflow Design"] },
+  { icon: Palette, title: "Graphic Design", color: "from-pink-400 to-rose-500", items: ["Logo Design", "Thumbnail Design", "Banner Design", "Social Media Design"] },
+  { icon: Video, title: "Video Editing", color: "from-orange-400 to-red-500", items: ["CapCut", "Premiere Pro", "After Effects", "Short Form Editing", "YouTube Editing"] },
+  { icon: TrendingUp, title: "Trading", color: "from-emerald-400 to-teal-500", items: ["Technical Analysis", "Risk Management", "Chart Reading", "Market Research"] },
+  { icon: Youtube, title: "Content Creation", color: "from-red-400 to-rose-500", items: ["YouTube", "Personal Branding", "Content Strategy", "Script Writing"] },
+  { icon: Users, title: "Soft Skills", color: "from-yellow-400 to-orange-500", items: ["Problem Solving", "Communication", "Leadership", "Creative Thinking", "Time Management", "Teamwork"] },
 ];
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 relative bg-secondary/30">
-      <div className="container max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-10 sm:mb-12 md:mb-16">
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 rounded-full glass text-xs sm:text-sm font-medium text-accent mb-3 sm:mb-4">
+    <section id="skills" className="relative py-24 px-4 sm:px-6">
+      <div className="absolute inset-0 grid-pattern opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
+      <div className="container max-w-7xl mx-auto relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="inline-block px-4 py-2 rounded-full glass text-xs font-medium text-primary tracking-[0.3em] uppercase mb-4">
             My Skills
           </span>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Technologies I{" "}
-            <span className="text-gradient-accent">Work With</span>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            Multi-Disciplinary <span className="text-gradient-cyber">Expertise</span>
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base md:text-lg max-w-2xl mx-auto">
-            Constantly learning and mastering the latest web technologies 
-            to deliver cutting-edge solutions.
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            A powerful stack of technologies and creative skills powering everything I build.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start">
-          {/* Skill Bars */}
-          <div className="space-y-4 sm:space-y-6">
-            {skills.map((skill, index) => (
-              <div key={skill.name} style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="flex justify-between items-center mb-1.5 sm:mb-2">
-                  <span className="font-display font-medium text-sm sm:text-base">{skill.name}</span>
-                  <span className="text-xs sm:text-sm text-muted-foreground">{skill.level}%</span>
-                </div>
-                <div className="h-2 sm:h-3 bg-muted rounded-full overflow-hidden">
-                  <div
-                    className="h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{
-                      width: `${skill.level}%`,
-                      background: index % 2 === 0 
-                        ? 'linear-gradient(90deg, hsl(210 76% 55%), hsl(222 76% 45%))'
-                        : 'linear-gradient(90deg, hsl(12 76% 65%), hsl(25 90% 55%))',
-                    }}
-                  />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {skillGroups.map((g, i) => (
+            <motion.div
+              key={g.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06 }}
+              whileHover={{ y: -8 }}
+              className="group relative glass neon-border rounded-2xl p-6 overflow-hidden"
+            >
+              <div className={`absolute -top-16 -right-16 w-40 h-40 bg-gradient-to-br ${g.color} opacity-20 blur-3xl rounded-full group-hover:opacity-40 transition-opacity`} />
+
+              <div className={`relative w-14 h-14 rounded-xl bg-gradient-to-br ${g.color} p-[1.5px] mb-5`}>
+                <div className="w-full h-full rounded-xl bg-card flex items-center justify-center">
+                  <g.icon className="w-6 h-6 text-primary" />
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Technology Tags */}
-          <div className="glass rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8">
-            <h3 className="font-display text-lg sm:text-xl font-semibold mb-4 sm:mb-6">Tech Stack</h3>
-            <div className="flex flex-wrap gap-2 sm:gap-3">
-              {technologies.map((tech, index) => (
-                <span
-                  key={tech}
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-muted text-xs sm:text-sm font-medium text-foreground
-                             hover:bg-primary/20 hover:text-primary transition-all duration-300 cursor-default"
-                  style={{ animationDelay: `${index * 0.05}s` }}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-            
-            <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-border">
-              <h4 className="font-display font-semibold mb-2 sm:mb-3 text-sm sm:text-base">Currently Learning</h4>
-              <div className="flex flex-wrap gap-2">
-                {["Next.js", "GraphQL", "Docker"].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg border border-accent/50 text-accent text-xs sm:text-sm font-medium"
-                  >
-                    {tech}
-                  </span>
+              <h3 className="font-display text-lg font-semibold mb-4">{g.title}</h3>
+
+              <ul className="space-y-1.5">
+                {g.items.map((item) => (
+                  <li key={item} className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2">
+                    <span className="w-1 h-1 rounded-full bg-primary" />
+                    {item}
+                  </li>
                 ))}
-              </div>
-            </div>
-          </div>
+              </ul>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
