@@ -1,4 +1,5 @@
 const profileAsset = { url: "/images/dileep-hero.png" };
+const cvUrl = "/files/Dileep_Kumar_CV.docx";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -95,7 +96,7 @@ const Hero = () => {
             <a href="#projects" className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-display font-semibold hover:scale-105 hover:shadow-neon transition-all duration-300 text-sm sm:text-base">
               View Portfolio
             </a>
-            <a href="#" download className="px-6 py-3.5 rounded-xl glass font-display font-semibold hover:border-primary/50 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2">
+            <a href={cvUrl} download="Dileep_Kumar_CV.docx" className="px-6 py-3.5 rounded-xl glass font-display font-semibold hover:border-primary/50 hover:scale-105 transition-all duration-300 text-sm sm:text-base inline-flex items-center gap-2">
               <Download size={16} /> Download CV
             </a>
             <a href="#contact" className="px-6 py-3.5 rounded-xl border border-primary/40 text-primary font-display font-semibold hover:bg-primary/10 hover:scale-105 transition-all duration-300 text-sm sm:text-base">
