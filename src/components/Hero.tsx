@@ -1,4 +1,4 @@
-import profileAsset from "@/assets/dileep-hero.png.asset.json";
+const profileAsset = { url: "/images/dileep-hero.png" };
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
