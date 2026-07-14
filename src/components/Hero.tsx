@@ -169,10 +169,6 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <a href="#about" className="hidden md:flex absolute bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
-        <span className="text-xs tracking-[0.3em] uppercase">Scroll</span>
-        <ArrowDown size={16} className="animate-bounce" />
-      </a>
     </section>
   );
 };
