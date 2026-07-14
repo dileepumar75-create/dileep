@@ -1,13 +1,19 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Globe, Shield, Sparkles, Layout, Server, Palette } from "lucide-react";
+import portfolioImg from "@/assets/project-portfolio.jpg";
+import cyberImg from "@/assets/project-cybersecurity.jpg";
+import aiImg from "@/assets/project-ai-design.jpg";
+import landingImg from "@/assets/project-landing.jpg";
+import wpImg from "@/assets/project-wordpress.jpg";
+import uiImg from "@/assets/project-ui-design.jpg";
 
 const projects = [
-  { icon: Globe, title: "Portfolio Website", tag: "Web Development", desc: "Premium personal branding site with futuristic 2026 UI, glassmorphism and neon animations.", color: "from-cyan-500 to-blue-600" },
-  { icon: Shield, title: "Cybersecurity Learning", tag: "Security", desc: "Hands-on labs and write-ups covering networking, Linux, and ethical hacking techniques.", color: "from-blue-500 to-indigo-600" },
-  { icon: Sparkles, title: "AI Design Projects", tag: "AI / Creative", desc: "AI-generated banners, thumbnails and brand visuals using Midjourney, Leonardo & Gemini.", color: "from-purple-500 to-pink-600" },
-  { icon: Layout, title: "Landing Pages", tag: "Web Design", desc: "High-converting responsive landing pages for startups, creators and small businesses.", color: "from-pink-500 to-rose-600" },
-  { icon: Server, title: "WordPress Websites", tag: "CMS", desc: "Custom WordPress builds with elegant themes, blazing performance and SEO optimization.", color: "from-emerald-500 to-teal-600" },
-  { icon: Palette, title: "UI Design Projects", tag: "UI / UX", desc: "Modern app and website interfaces designed with Apple-Tesla-Microsoft inspired aesthetics.", color: "from-orange-500 to-red-600" },
+  { icon: Globe, image: portfolioImg, title: "Portfolio Website", tag: "Web Development", desc: "Premium personal branding site with futuristic 2026 UI, glassmorphism and neon animations.", color: "from-cyan-500 to-blue-600" },
+  { icon: Shield, image: cyberImg, title: "Cybersecurity Learning", tag: "Security", desc: "Hands-on labs and write-ups covering networking, Linux, and ethical hacking techniques.", color: "from-blue-500 to-indigo-600" },
+  { icon: Sparkles, image: aiImg, title: "AI Design Projects", tag: "AI / Creative", desc: "AI-generated banners, thumbnails and brand visuals using Midjourney, Leonardo & Gemini.", color: "from-purple-500 to-pink-600" },
+  { icon: Layout, image: landingImg, title: "Landing Pages", tag: "Web Design", desc: "High-converting responsive landing pages for startups, creators and small businesses.", color: "from-pink-500 to-rose-600" },
+  { icon: Server, image: wpImg, title: "WordPress Websites", tag: "CMS", desc: "Custom WordPress builds with elegant themes, blazing performance and SEO optimization.", color: "from-emerald-500 to-teal-600" },
+  { icon: Palette, image: uiImg, title: "UI Design Projects", tag: "UI / UX", desc: "Modern app and website interfaces designed with Apple-Tesla-Microsoft inspired aesthetics.", color: "from-orange-500 to-red-600" },
 ];
 
 const Projects = () => {
@@ -48,12 +54,20 @@ const Projects = () => {
               <div className="relative rounded-3xl bg-card/90 backdrop-blur-xl p-6 h-full flex flex-col overflow-hidden">
                 <div className={`absolute -top-20 -right-20 w-48 h-48 bg-gradient-to-br ${p.color} opacity-20 blur-3xl rounded-full group-hover:opacity-40 transition-opacity`} />
 
-                {/* Preview area */}
-                <div className={`relative rounded-2xl h-40 mb-5 overflow-hidden bg-gradient-to-br ${p.color}/20 border border-primary/20 flex items-center justify-center`}>
-                  <div className="absolute inset-0 grid-pattern opacity-30" />
-                  <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${p.color} p-[2px]`}>
-                    <div className="w-full h-full rounded-2xl bg-background/90 flex items-center justify-center">
-                      <p.icon className="w-10 h-10 text-primary" />
+                {/* Preview image */}
+                <div className="relative rounded-2xl h-44 mb-5 overflow-hidden border border-primary/20">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    width={1024}
+                    height={768}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                  <div className={`absolute top-3 left-3 w-10 h-10 rounded-xl bg-gradient-to-br ${p.color} p-[2px]`}>
+                    <div className="w-full h-full rounded-[10px] bg-background/90 flex items-center justify-center">
+                      <p.icon className="w-5 h-5 text-primary" />
                     </div>
                   </div>
                 </div>
