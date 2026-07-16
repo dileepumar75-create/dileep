@@ -1,4 +1,4 @@
-const profileAsset = { url: "/images/dileep-hero.png" };
+import profileAsset from "@/assets/dileep-hero.png.asset.json";
 const cvUrl = "/files/Dileep_Kumar_CV.docx";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
