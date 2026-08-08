@@ -1,5 +1,5 @@
-import profileAsset from "@/assets/dileep-hero.png.asset.json";
-const cvUrl = "/files/Dileep_Kumar_CV.docx";
+const profileSrc = "/profile.jpg";
+import { motion } from "framer-motion";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
 import { useEffect, useState } from "react";
