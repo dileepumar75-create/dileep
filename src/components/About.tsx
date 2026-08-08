@@ -1,4 +1,4 @@
-import aboutAsset from "@/assets/dileep-about.png.asset.json";
+const aboutSrc = "/about.jpg";
 import { motion } from "framer-motion";
 import { Shield, Code2, Cpu, Palette } from "lucide-react";
 
