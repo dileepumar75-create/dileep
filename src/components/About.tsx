@@ -39,7 +39,7 @@ const About = () => {
             className="relative"
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl rounded-3xl" />
-            <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[4/5]">
+            <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[16/9]">
               <img src={aboutSrc} alt="Dileep Kumar - About Me" className="w-full h-full object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
