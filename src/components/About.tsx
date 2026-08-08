@@ -1,4 +1,4 @@
-import aboutAsset from "@/assets/dileep-about.png.asset.json";
+const aboutSrc = "/about.jpg";
 import { motion } from "framer-motion";
 import { Shield, Code2, Cpu, Palette } from "lucide-react";
 
@@ -40,7 +40,7 @@ const About = () => {
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl rounded-3xl" />
             <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow">
-              <img src={aboutAsset.url} alt="Dileep Kumar" className="w-full h-auto object-cover" />
+              <img src={aboutSrc} alt="Dileep Kumar - About Me" className="w-full h-auto object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="glass rounded-2xl p-4">

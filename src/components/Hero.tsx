@@ -1,4 +1,4 @@
-import profileAsset from "@/assets/dileep-hero.png.asset.json";
+const profileSrc = "/profile.jpg";
 const cvUrl = "/files/Dileep_Kumar_CV.docx";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail, Sparkles } from "lucide-react";
@@ -140,7 +140,7 @@ const Hero = () => {
 
             {/* Image */}
             <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-2 border-primary/40 glow-neon">
-              <img src={profileAsset.url} alt="Dileep Kumar" className="w-full h-full object-cover" />
+              <img src={profileSrc} alt="Dileep Kumar profile photo" className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </div>
 
