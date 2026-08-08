@@ -29,17 +29,17 @@ const About = () => {
           </h2>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Image */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-5 relative"
+            className="relative"
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl rounded-3xl" />
-            <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[4/5] lg:aspect-[5/6]">
+            <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[4/5]">
               <img src={aboutSrc} alt="Dileep Kumar - About Me" className="w-full h-full object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
@@ -57,7 +57,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-7 lg:pl-4"
+            className=""
           >
             <div className="space-y-4 text-muted-foreground text-sm sm:text-base leading-relaxed">
               <p>
