@@ -36,16 +36,16 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative"
+            className="relative mx-auto w-full max-w-[280px] sm:max-w-md lg:max-w-none"
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl rounded-3xl" />
             <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[16/9]">
               <img src={aboutSrc} alt="Dileep Kumar - About Me" className="w-full h-full object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <div className="glass rounded-2xl p-4">
-                  <p className="font-display font-semibold text-gradient">Dileep Kumar</p>
-                  <p className="text-xs text-muted-foreground">Cybersecurity • AI • Web Development</p>
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="glass rounded-2xl p-3 sm:p-4">
+                  <p className="font-display font-semibold text-gradient text-base sm:text-lg">Dileep Kumar</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">Cybersecurity • AI • Web Development</p>
                 </div>
               </div>
             </div>
