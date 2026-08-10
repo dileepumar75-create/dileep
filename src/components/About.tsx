@@ -36,7 +36,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative mx-auto w-full max-w-[280px] sm:max-w-md lg:max-w-none"
+            className="relative mx-auto w-full sm:max-w-md lg:max-w-none"
           >
             <div className="absolute -inset-4 bg-gradient-to-br from-primary/30 via-accent/20 to-transparent blur-3xl rounded-3xl" />
             <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[16/9]">
