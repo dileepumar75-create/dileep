@@ -42,10 +42,10 @@ const About = () => {
             <div className="relative rounded-3xl overflow-hidden border border-primary/30 glow aspect-[16/9]">
               <img src={aboutSrc} alt="Dileep Kumar - About Me" className="w-full h-full object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/10 to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4">
-                <div className="glass rounded-2xl p-3 sm:p-4">
-                  <p className="font-display font-semibold text-gradient text-base sm:text-lg">Dileep Kumar</p>
-                  <p className="text-[10px] sm:text-xs text-muted-foreground">Cybersecurity • AI • Web Development</p>
+              <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4">
+                <div className="glass rounded-xl sm:rounded-2xl px-2.5 py-1.5 sm:p-4">
+                  <p className="font-display font-semibold text-gradient text-xs sm:text-lg leading-tight">Dileep Kumar</p>
+                  <p className="text-[8px] sm:text-xs text-muted-foreground leading-tight">Cybersecurity • AI • Web Development</p>
                 </div>
               </div>
             </div>
